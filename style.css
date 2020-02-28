@@ -22,8 +22,13 @@ h1{
 
 .main-nav li{
     padding: 0 2rem;
+    cursor: pointer;
 }
 
 .main-nav li:first-child{
     padding-left: 0;
+}
+
+nav{
+    width: 400px;
 }
