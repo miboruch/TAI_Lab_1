@@ -1,0 +1,15 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+
+body{
+    padding: 2rem;
+    background-color: #ccc;
+}
+
+h1{
+    font-size: 15px;
+}
