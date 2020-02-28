@@ -13,3 +13,17 @@ body{
 h1{
     font-size: 15px;
 }
+
+.main-nav{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.main-nav li{
+    padding: 0 2rem;
+}
+
+.main-nav li:first-child{
+    padding-left: 0;
+}
