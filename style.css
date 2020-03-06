@@ -8,23 +8,24 @@
 }
 
 body {
-  padding: 2rem;
+  padding: 0;
   background-color: #ccc;
 }
 
 h1 {
   font-size: 15px;
+  padding: 1rem;
 }
 
 .main-nav {
-  display: flex;
-  flex-direction: row;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-nav li {
-  padding: 0 2rem;
   cursor: pointer;
+  text-align: left;
 }
 
 .main-nav li:first-child {
@@ -32,7 +33,7 @@ h1 {
 }
 
 nav {
-  width: 400px;
+  width: 100%;
 }
 
 form {
@@ -40,6 +41,10 @@ form {
 }
 
 a {
+  color: #000;
+}
+
+a:link {
   color: #000;
 }
 
@@ -66,4 +71,19 @@ a:visited {
 
 .nav-wrapper {
   width: 100%;
+}
+
+.sidebar {
+  background-color: #ccc;
+  width: 100%;
+  height: 100vh;
+}
+
+i {
+  width: 25px;
+  height: 25px;
+}
+
+h3{
+    padding: 1rem;
 }
