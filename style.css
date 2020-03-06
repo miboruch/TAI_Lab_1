@@ -54,10 +54,16 @@ a:visited {
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  position: relative;
 }
 
 .submit-button,
 .select-input,
-.checkbox-wrapper {
+.checkbox-wrapper,
+.link {
   margin-top: 1rem;
+}
+
+.nav-wrapper {
+  width: 100%;
 }
