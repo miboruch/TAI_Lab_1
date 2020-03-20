@@ -7,6 +7,10 @@
   margin: 0;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   padding: 0;
   background-color: #ccc;
@@ -111,4 +115,16 @@ h3{
   color: #fff;
   letter-spacing: 1px;
   font-size: 14px;
+}
+
+.scroll{
+  position: fixed;
+  visibility: hidden;
+  bottom: 4rem;
+  right: 3rem;
+  transition: all 0.6s ease;
+}
+
+.empty-box{
+  height: 50vh;
 }
