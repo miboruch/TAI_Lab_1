@@ -8,7 +8,7 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Quiz</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/quiz.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -21,11 +21,59 @@
     />
   </head>
   <body>
-    <div class="wrapper padding-wrapper">
-      <h1>Quiz</h1>
-      <div class="navbar"></div>
-      <a href="index.html">Go back to the main page</a>
+    <div class="quiz-wrapper padding-wrapper">
+      <div class="timer"></div>
+
+      <!--    Quiz container    -->
+      <div class="container list">
+        <div class="question-wrapper">
+        Question: <p class="current-question"></p>
+        </div>
+        <h4 class="question"></h4>
+
+        Answers:
+        <ul class="list-group">
+          <li class="list-group-item"></li>
+          <li class="list-group-item"></li>
+          <li class="list-group-item"></li>
+          <li class="list-group-item"></li>
+        </ul>
+
+        <div class="buttons">
+          <button class="btn btn-danger previous">Previous</button>
+          <button class="btn btn-success next">Next</button>
+        </div>
+
+        <h4>Your score: <span class="score">0</span>/20 points.</h4>
+      </div>
+      <div class="container results" style="display: none">
+        <div class="btn-group-custom">
+          <button class="btn btn-success btn-custom restart">
+            Retake quiz
+          </button>
+        </div>
+        <div class="score">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Point/20</th>
+                <th>Average</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Your score</th>
+                <td class="userScorePoint"></td>
+                <td class="average"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <a href="index.html" class="quiz-back">Go back to the main page</a>
     </div>
+    <!--    Quiz container end    -->
 
     <div class="scroll">
       <button class="btn btn-success">
@@ -33,7 +81,7 @@
       </button>
     </div>
 
-    <script src="js/navbar.js"></script>
     <script src="js/scroll.js"></script>
+    <script src="js/quiz.js"></script>
   </body>
 </html>
