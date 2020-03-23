@@ -219,8 +219,10 @@ const userScorePoint = document.querySelector(".userScorePoint");
 
 const pointsElem = document.querySelector(".score");
 const restart = document.querySelector(".restart");
+
 let index = 0;
 let points = 0;
+let userAnswers = [];
 
 /* --- */
 
@@ -228,7 +230,28 @@ function setCurrentQuestionNumber(number) {
   currentQuestionWrapper.innerHTML = `${++number}/${preQuestions.length}`;
 }
 
+function getPreviousAnswer(index) {
+  answers.forEach(item => {
+    item.classList.remove("correct", "incorrect");
+  });
+
+  const question = preQuestions[index];
+  const correctAnswerIndex = question.answers.indexOf(question.correct_answer);
+  markCorrect(answers[correctAnswerIndex]);
+
+  if (question.correct_answer !== userAnswers[index]) {
+    const incorrectUserAnswer = question.answers.indexOf(userAnswers[index]);
+    markIncorrect(answers[incorrectUserAnswer]);
+  }
+  disableAnswers();
+}
+
 function setQuestion(index) {
+  next.disabled = true;
+  if (index < userAnswers.length) {
+    getPreviousAnswer(index);
+    next.disabled = false;
+  }
   setCurrentQuestionNumber(index);
   question.innerHTML = preQuestions[index].question;
 
@@ -285,22 +308,25 @@ function quizEnd(points) {
 }
 
 function markCorrect(elem) {
-    elem.classList.add("correct");
+  elem.classList.add("correct");
 }
 
 function markIncorrect(elem) {
-    elem.classList.add("incorrect");
+  elem.classList.add("incorrect");
 }
 
 function doAction(event) {
-    if (event.target.innerHTML === preQuestions[index].correct_answer) {
-        points++;
-        markCorrect(event.target);
-        pointsElem.innerText = points;
-    } else {
-        markIncorrect(event.target);
-    }
-    disableAnswers();
+  userAnswers.push(event.target.innerHTML);
+  console.log(userAnswers);
+  if (event.target.innerHTML === preQuestions[index].correct_answer) {
+    points++;
+    markCorrect(event.target);
+    pointsElem.innerText = points;
+  } else {
+    markIncorrect(event.target);
+  }
+  disableAnswers();
+  next.disabled = false;
 }
 
 /* --- */
@@ -308,18 +334,25 @@ function doAction(event) {
 setQuestion(0);
 activateAnswers();
 
-next.addEventListener("click", function(event) {
+next.addEventListener("click", function() {
   index++;
+  console.log(index);
   if (index >= preQuestions.length) {
     quizEnd(points);
   } else {
-    setQuestion(index);
     activateAnswers();
+    setQuestion(index);
   }
 });
 
-previous.addEventListener("click", function(event) {
-  index !== 0 ? setQuestion(--index) : null;
+previous.addEventListener("click", function() {
+  if (index !== 0) {
+    index--;
+    console.log(index);
+    setQuestion(index);
+    disableAnswers();
+    getPreviousAnswer(index);
+  }
 });
 
 restart.addEventListener("click", function(event) {

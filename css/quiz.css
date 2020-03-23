@@ -38,7 +38,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 0;
   height: 8px;
   background-color: lightgreen;
 }
@@ -50,4 +50,18 @@ a {
 
 .current-question {
   padding-left: 5px;
+}
+
+@keyframes timerAnimation {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.timerAnimated {
+  animation-name: timerAnimation;
+  animation-duration: 15s;
 }
